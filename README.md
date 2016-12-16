@@ -26,6 +26,7 @@ http://troikatronix.com/troikatronixforum/discussion/159/arduino-isadora/p1
 
 In Isadora use “Serial In watcher text” with decoding parameters:
 
+```
 "FDAT: "
 value1 : integer = 3 digits
 value2 : integer = 3 digits
@@ -40,6 +41,7 @@ value10 : integer = 3 digits
 value11 : integer = 3 digits
 value12 : integer = 3 digits
 value13 : integer = 3 digits
+```
 
 Using BareConductive Arduino script: “DataStream” 
 “The DataStream code is an example within our MPR121 Library. Find it by navigating to File/ Examples/ MPR121/ Examples/ DataStream. ”
