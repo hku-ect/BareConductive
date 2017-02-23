@@ -29,9 +29,7 @@ Get the file from the github, open it in the Arduino IDE and upload it to the Ba
 ## 5. Open bareConductiveDemo.izz in Isadora
 * Get the file from the github, open it in Isadora.
 * Go to Communications -> Serial Port Setup
-* From the dropdown menu of port 1 choose the right com port
-..* on Windows it will be called COM with a number
-..* on OSX it will be called usbmoden1411 or similar
+* From the dropdown menu of port 1 choose the right com port (on Windows it will be called COM with a number and on OSX it will be called usbmoden1411 or similar)
 * Set the speed to 9600, No Parity, Bits 8
 * go to Comunnications -> Enable Serial Ports
 
