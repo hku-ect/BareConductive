@@ -80,6 +80,13 @@ http://www.bareconductive.com/make/the-touch-board-maxmsp
 Change sensitivity of you BAREconductive:
 http://www.bareconductive.com/make/proximity
 
+# Troubleshooting
+
+### Windows
+When Isadora cannot find the BareConductive because the COM port number is higher then ten you will probably need to delete unused comports that are stuck in Windows. See the folowwing two links on how to do that:
+* https://answers.microsoft.com/en-us/windows/forum/windows_7-hardware/how-do-i-delete-the-unused-com-ports-in-windows-7/4bb72733-1be0-4168-9ba5-68dcb72d31d9
+* https://superuser.com/questions/408976/how-do-i-clean-up-com-ports-in-use
+
 
 
 
