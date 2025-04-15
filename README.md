@@ -64,13 +64,15 @@ The Bare Conductive sends different kinds of data over the serial port from the 
 These different kinds of data are:
 
 FDAT - Basic electrode data  
-TOUCH - Binary indication of touch event ( 0 for no touch or 1 for touch)
+TOUCH - Binary indication of touch event ( 0 for no touch or 1 for touch)  
 BVAL - Baseline electrode data  
 TTHS - Touch threshold (set in code)  
 RTHS - Release threshold (set in code)  
 DIFF - Difference between FDAT & BVAL  
 
-**Start using the "FDAT" data this is the most basic form of data from the Touch Board electrodes.**
+
+| :exclamation:  Start using the "FDAT" data this is the most basic form of data from the Touch Board electrodes.   |
+|----------------------------------------------|
 
 ## More information for Isadora:
 
