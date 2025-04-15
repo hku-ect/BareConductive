@@ -56,7 +56,27 @@ Now that you have the Arduino IDE set up, you can change the code on the Touch B
 
 After these steps, you should see changing values at the BareConductiveFDAT actor. Try attaching something to the electrodes and see how the numbers change.
 
-The data is sent from the Bare Conductive to Isadora over the serial port. Use the "Serial In watcher text" to decode the incoming data. See text below for an example of the decoding parameters:
+
+# Note on the Data:
+
+The Bare Conductive sends different kinds of data over the serial port from the Bare Conductive to Isadora over the serial port.   
+ 
+These different kinds of data are:
+
+FDAT - Basic electrode data  
+TOUCH - Binary indication of touch event ( 0 for no touch or 1 for touch)
+BVAL - Baseline electrode data  
+TTHS - Touch threshold (set in code)  
+RTHS - Release threshold (set in code)  
+DIFF - Difference between FDAT & BVAL  
+
+**Start using the "FDAT" data this is the most basic form of data from the Touch Board electrodes.**
+
+## More information for Isadora:
+
+To recieve the serial data in Isadora we use the "Serial In watcher text" Isadora actor. If you double click the actor then a text field will open where you can enter text to be able to filter the incoming data to the outputs of the Serial In Watcher text actor. You can find more explaination about how to do this [here](https://community.troikatronix.com/assets/uploads/files/1596797032031-isadora-manual-v3.0-serial-datapdf.pdf)
+
+As an example of how we decode the incoming FDAT data of the Bare Conductive board sse the text below:
 
 ```
 "FDAT: "
@@ -75,17 +95,6 @@ value12 : integer = 3 digits
 value13 : integer = 3 digits
 ```
 
-# Note on the Data:
-
-The Bare Conductive sends different kinds of data over the serial port.   
-Start using the "FDAT" data this is the most basic form of data from the Touch Board electrodes. 
-
-FDAT - Basic electrode data  
-TOUCH - Binary indication of touch event  
-BVAL - Baseline electrode data  
-TTHS - Touch threshold (set in code)  
-RTHS - Release threshold (set in code)  
-DIFF - Difference between FDAT & BVAL  
 
 # Links:
 
