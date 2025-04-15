@@ -1,10 +1,14 @@
-# BareConductive
-How to use the BareConductive with Isadora. 
+> [!CAUTION]
+> **The Bare Conductive Board is now (as of March 5, 2025) no longer active and available. See: https://www.bareconductive.com/
+> The instructions written down here are still valid, but it is no longer possible to buy new boards from Bare Conductive.**
 
-The Master Introduction workshop uses the Bareconductive capacitive sensor as input (http://www.bareconductive.com).
-Here you can read how we use the Bare Conductive in combination with Isadora. We directly read the data from the Bare Conductive board over the serial port into Isadora.
+# Bare Conductive
+In this Github repository you can find files and instructions about how to use the BareConductive with Isadora & Processing. We will prepare the BareConductive Board with an Arduino sketch that will send the sensor data via the usb cable to the computer to be used in Isadora & Procesing.
 
-## How to connect Bareconductive touchboard to ISADORA:
+| :memo:        | This guide assumes you are working with an new BareConductive that has not been used with a computer before.       |
+|---------------|:---------------------------------------------|
+
+## How to connect Bare Conductive board to ISADORA:
 
 To use the Bareconductive touchborad with Isadora we need to take a couple of steps:
 
@@ -15,16 +19,28 @@ To use the Bareconductive touchborad with Isadora we need to take a couple of st
 5. Open bareConductiveDemo.izz in Isadora
 
 ## 1. Install the Arduino IDE
-To instal the Arduino IDE (Integrated Development Environment) go to https://www.arduino.cc/en/Main/Software and download the IDE for you operating system.
+First, download the Legacy Arduino IDE (1.8.X) Arduino IDE from the [Arduino website](https://www.arduino.cc/en/Main/Software). The Touch Board does not work with Arduino IDE 2.X.X. Once you've downloaded the Arduino IDE, please save it to your Applications folder on macOS or run the installer on Windows. The Touch Board doesn't work with the Arduino web editor.
+
+Please note that for Windows, the Arduino IDE needs to be installed from the Arduino Website and not from the Windows App Store.
+
+Open the Arduino IDE once and close it again, creating the necessary Arduino folders in your Documents folder.
 
 ## 2. (Windows only) install the touchboard driver
-Go to: https://github.com/BareConductive/touch-board-driver and follow the instructions
+The windows driver can be found in this repositiry in the folder: WindowsDriver
 
 ## 3. Install the Touch Board Arduino Plugin
-Go to: http://www.bareconductive.com/make/setting-up-arduino-with-your-touch-board/ and follow the instructions
+Follow the instructions that can be found in the folder: Touch_Board_Manual_Install
+See also this [Youtube video](https://www.youtube.com/watch?v=laDD8L2U4B4)
 
 ## 4. Upload the "Datastream.ino" to the touchboard
-Get the file from the github, open it in the Arduino IDE and upload it to the Bareconductive
+Now that you have the Arduino IDE set up, you can change the code on the Touch Board! In this example, we're going to show you how to upload "DataStream.ino", this is the code that will send the recieved touch data over the serial port to the connected computer.
+
+* Open the Arduino IDE and select the Arduino file "DataStream.ino" from the repository folder "arduino/DataStream"
+* Then, connect your Touch Board to your computer and turn on your board. On Windows, you may see a message pop up telling you that a driver is being installed. Your computer may alert you that the installation has failed, but it will work correctly once the installer is complete. Please wait up to two minutes before proceeding.
+* In the Arduino IDE, select the Touch Board from: Tools→Board Additionally, select the board from: Tools→Port
+* Search for the ports labeled Bare Conductive Touch Board. There may be several options available on Linux and Mac machines. Choose the one with "CU" in the name. In Windows, there should be one COM port labeled Bare Conductive Touch Board – choose this.
+* With the board selected twice, click on the upload button. Please give it up to a minute to upload. When the upload is complete, the Arduino IDE will report "Done uploading." You can also tell by checking the Touch Board. Once the LED stops flashing, the Touch Board has uploaded the code.
+* On Windows machines, you may now see another attempt to install a driver, which most likely will appear to fail, and the upload will fail too. Again, please wait up to two minutes and try again. This failure will only happen the first time you reprogram the Touch Board.
 
 ## 5. Open bareConductiveDemo.izz in Isadora
 * Get the file from the github, open it in Isadora.
@@ -59,33 +75,30 @@ value13 : integer = 3 digits
 The Bareconductive sends different kinds of data over the serial port.   
 Start using the "FDAT" data this is the most basic form of data from the Touch Board electrodes. 
 
-FDAT - Basic electrode data
-TOUCH - Bnary indication of touch event
-BVAL - Baseline electrode data
-TTHS - Touch threshold (set in code)
-RTHS - Release threshold (set in code)
-DIFF - Difference between FDAT & BVAL
+FDAT - Basic electrode data  
+TOUCH - Bnary indication of touch event  
+BVAL - Baseline electrode data  
+TTHS - Touch threshold (set in code)  
+RTHS - Release threshold (set in code)  
+DIFF - Difference between FDAT & BVAL  
 
 # Links:
 
 Isadora arduino tutorials/forum posts:
-http://art-research2010summer.blogspot.nl/2010/06/tutorial-01-isadora-and-arduino.html 
-http://forum.troikatronix.com/forum/Isadora_C2/User_Patches%2C_Tips_%26_Tricks_F7/Arduino_and_servos_from_isadora_P82/
-http://troikatronix.com/troikatronixforum/discussion/159/arduino-isadora/p1
+* [Tutorial 01 Isadora and Arduino](http://art-research2010summer.blogspot.nl/2010/06/tutorial-01-isadora-and-arduino.html)
 
-Using BareConductive Arduino script: “DataStream” 
-“The DataStream code is an example within our MPR121 Library. Find it by navigating to File/ Examples/ MPR121/ Examples/ DataStream. ”
-http://www.bareconductive.com/make/the-touch-board-maxmsp 
+Using BareConductive Arduino script: “DataStream”: 
+* The wayback page of: http://www.bareconductive.com/make/the-touch-board-maxmsp can be found [here](https://web.archive.org/web/20201202163159/https://www.bareconductive.com/make/the-touch-board-maxmsp/)
 
 Change sensitivity of you BAREconductive:
-http://www.bareconductive.com/make/proximity
+* The wayback page of: http://www.bareconductive.com/make/proximity can be found [here](https://web.archive.org/web/20200925073652/https://www.bareconductive.com/make/proximity/)
 
 # Troubleshooting
 
 ### Windows
 When Isadora cannot find the BareConductive because the COM port number is higher then ten you will probably need to delete unused comports that are stuck in Windows. See the folowwing two links on how to do that:
-* https://answers.microsoft.com/en-us/windows/forum/windows_7-hardware/how-do-i-delete-the-unused-com-ports-in-windows-7/4bb72733-1be0-4168-9ba5-68dcb72d31d9
-* https://superuser.com/questions/408976/how-do-i-clean-up-com-ports-in-use
+* [How do I delete the unused COM ports in Windows 7? ](https://answers.microsoft.com/en-us/windows/forum/windows_7-hardware/how-do-i-delete-the-unused-com-ports-in-windows-7/4bb72733-1be0-4168-9ba5-68dcb72d31d9)
+* [How do I clean up COM ports in use?](https://superuser.com/questions/408976/how-do-i-clean-up-com-ports-in-use)
 
 
 
